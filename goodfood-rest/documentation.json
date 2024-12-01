@@ -1,0 +1,238 @@
+[
+    {
+        "id": "savu12",
+        "location": {
+            "type": "AUTHORIZER",
+            "name": "auth-rest"
+        },
+        "properties": "{\n    \"description\": \"Autenticação por CPF\"\n}"
+    },
+    {
+        "id": "lxv4qe",
+        "location": {
+            "type": "METHOD",
+            "path": "/cliente/buscar-cpf/{cpf}",
+            "method": "GET"
+        },
+        "properties": "{\n    \"description\": \"Identificação do Cliente via CPF\"\n}"
+    },
+    {
+        "id": "m8h0le",
+        "location": {
+            "type": "METHOD",
+            "path": "/cliente",
+            "method": "POST"
+        },
+        "properties": "{\n    \"description\": \"Cadastro do Cliente\"\n}"
+    },
+    {
+        "id": "1o4ty4",
+        "location": {
+            "type": "METHOD",
+            "path": "/login",
+            "method": "POST"
+        },
+        "properties": "{\n    \"description\": \"Autenticação por CPF\"\n}"
+    },
+    {
+        "id": "42x2rv",
+        "location": {
+            "type": "METHOD",
+            "path": "/pedido/avancar-status/{id}",
+            "method": "POST"
+        },
+        "properties": "{\n    \"description\": \"Avançar o status de um pedido\"\n}"
+    },
+    {
+        "id": "5cotr3",
+        "location": {
+            "type": "METHOD",
+            "path": "/pedido/pagamento/webhook/{idPedido}",
+            "method": "PUT"
+        },
+        "properties": "{\n    \"description\": \"Atualiza o status do pagamento do pedido para PAGO\"\n}"
+    },
+    {
+        "id": "fx6b77",
+        "location": {
+            "type": "METHOD",
+            "path": "/pedido/{id}",
+            "method": "GET"
+        },
+        "properties": "{\n    \"description\": \"Retorna o pedido pelo ID\"\n}"
+    },
+    {
+        "id": "w0989k",
+        "location": {
+            "type": "METHOD",
+            "path": "/pedido",
+            "method": "GET"
+        },
+        "properties": "{\n    \"description\": \"Lista todos os pedidos, seguindo o critério: 1. Pronto > Em Preparação > Recebido; 2. Pedidos mais antigos primeiro e mais novos depois; 3. Pedidos com status Finalizado não devem aparecer na lista\"\n}"
+    },
+    {
+        "id": "z86ftc",
+        "location": {
+            "type": "METHOD",
+            "path": "/pedido",
+            "method": "POST"
+        },
+        "properties": "{\n    \"description\": \"Cadastra o pedido na fila\"\n}"
+    },
+    {
+        "id": "s23rde",
+        "location": {
+            "type": "METHOD",
+            "path": "/produto/categoria",
+            "method": "GET"
+        },
+        "properties": "{\n    \"description\": \"Buscar produtos por categoria\"\n}"
+    },
+    {
+        "id": "cvksua",
+        "location": {
+            "type": "METHOD",
+            "path": "/produto/{id}",
+            "method": "DELETE"
+        },
+        "properties": "{\n    \"description\": \"Remover um produto\"\n}"
+    },
+    {
+        "id": "q5hugq",
+        "location": {
+            "type": "METHOD",
+            "path": "/produto/{id}",
+            "method": "PUT"
+        },
+        "properties": "{\n    \"description\": \"Editar um produto\"\n}"
+    },
+    {
+        "id": "2m86n4",
+        "location": {
+            "type": "METHOD",
+            "path": "/produto",
+            "method": "POST"
+        },
+        "properties": "{\n    \"description\": \"Criar produto\"\n}"
+    },
+    {
+        "id": "0ygszt",
+        "location": {
+            "type": "MODEL",
+            "name": "Cliente"
+        },
+        "properties": "{\n  \"description\": \"Cliente\"\n}"
+    },
+    {
+        "id": "lhftjq",
+        "location": {
+            "type": "MODEL",
+            "name": "ClienteResponse"
+        },
+        "properties": "{\n  \"description\": \"Cliente\"\n}"
+    },
+    {
+        "id": "zmqt77",
+        "location": {
+            "type": "MODEL",
+            "name": "Empty"
+        },
+        "properties": "{\n    \"description\": \"Nenhuma informação\"\n}"
+    },
+    {
+        "id": "v6ut3w",
+        "location": {
+            "type": "MODEL",
+            "name": "Error"
+        },
+        "properties": "{\n    \"description\": \"Erro não identificado\"\n}"
+    },
+    {
+        "id": "gmxnst",
+        "location": {
+            "type": "MODEL",
+            "name": "Pedido"
+        },
+        "properties": "{\n  \"description\": \"Pedido\"\n}"
+    },
+    {
+        "id": "tzu3ok",
+        "location": {
+            "type": "MODEL",
+            "name": "PedidoListResponse"
+        },
+        "properties": "{\n  \"description\": \"Lista de pedidos\"\n}"
+    },
+    {
+        "id": "nj32r6",
+        "location": {
+            "type": "MODEL",
+            "name": "PedidoResponse"
+        },
+        "properties": "{\n  \"description\": \"Pedido\"\n}"
+    },
+    {
+        "id": "bhyfdd",
+        "location": {
+            "type": "MODEL",
+            "name": "Produto"
+        },
+        "properties": "{\n    \"description\": \"Produto\"\n}"
+    },
+    {
+        "id": "xuyjau",
+        "location": {
+            "type": "MODEL",
+            "name": "ProdutoResponse"
+        },
+        "properties": "{\n  \"description\": \"Produto\"\n}"
+    },
+    {
+        "id": "iq3que",
+        "location": {
+            "type": "RESOURCE",
+            "path": "/"
+        },
+        "properties": "{\n    \"description\": \"GoodFood API\"\n}"
+    },
+    {
+        "id": "npuk4p",
+        "location": {
+            "type": "RESOURCE",
+            "path": "/cliente"
+        },
+        "properties": "{\n    \"description\": \"Cliente API\"\n}"
+    },
+    {
+        "id": "gijcz8",
+        "location": {
+            "type": "RESOURCE",
+            "path": "/hello-world"
+        },
+        "properties": "{\n    \"description\": \"Hello World API\"\n}"
+    },
+    {
+        "id": "i8vfzg",
+        "location": {
+            "type": "RESOURCE",
+            "path": "/pedido/regredir-status"
+        },
+        "properties": "{\n    \"description\": \"Regredir o status de um pedido\"\n}"
+    },
+    {
+        "id": "e1rhhx",
+        "location": {
+            "type": "RESOURCE",
+            "path": "/pedido"
+        },
+        "properties": "{\n    \"description\": \"Pedido API\"\n}"
+    },
+    {
+        "id": "b6x45e",
+        "location": {
+            "type": "RESOURCE",
+            "path": "/produto"
+        },
+        "properties": "{\n    \"description\": \"Produto API\"\n}"
+    }
+]

@@ -1,0 +1,751 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "goodfood-rest",
+    "version" : "2024-12-01T21:19:25Z"
+  },
+  "servers" : [ {
+    "url" : "https://6c6lhva590.execute-api.us-east-1.amazonaws.com/{basePath}",
+    "variables" : {
+      "basePath" : {
+        "default" : "hmg"
+      }
+    }
+  } ],
+  "paths" : {
+    "/produto/categoria" : {
+      "get" : {
+        "description" : "Buscar produtos por categoria",
+        "parameters" : [ {
+          "name" : "categoria",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProdutoResponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "auth-rest" : [ ]
+        } ]
+      }
+    },
+    "/pedido/avancar-status/{id}" : {
+      "post" : {
+        "description" : "Avançar o status de um pedido",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PedidoResponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "auth-rest" : [ ]
+        } ]
+      }
+    },
+    "/login" : {
+      "post" : {
+        "description" : "Autenticação por CPF",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/LoginRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "400" : {
+            "description" : "400 response",
+            "content" : { }
+          },
+          "401" : {
+            "description" : "401 response",
+            "content" : { }
+          },
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Empty"
+                }
+              },
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/LoginResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pedido/{id}" : {
+      "get" : {
+        "description" : "Retorna o pedido pelo ID",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PedidoResponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "auth-rest" : [ ]
+        } ]
+      }
+    },
+    "/cliente" : {
+      "post" : {
+        "description" : "Cadastro do Cliente",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Cliente"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "400" : {
+            "description" : "400 response",
+            "content" : { }
+          },
+          "500" : {
+            "description" : "500 response",
+            "content" : { }
+          },
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ClienteResponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "auth-rest" : [ ]
+        } ]
+      }
+    },
+    "/produto/{id}" : {
+      "get" : {
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "auth-rest" : [ ]
+        } ]
+      },
+      "put" : {
+        "description" : "Editar um produto",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Produto"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProdutoResponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "auth-rest" : [ ]
+        } ]
+      }
+    },
+    "/pedido/regredir-status/{id}" : {
+      "post" : {
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PedidoResponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "auth-rest" : [ ]
+        } ]
+      }
+    },
+    "/pedido/pagamento/webhook/{idPedido}" : {
+      "put" : {
+        "description" : "Atualiza o status do pagamento do pedido para PAGO",
+        "parameters" : [ {
+          "name" : "idPedido",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PedidoResponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "auth-rest" : [ ]
+        } ]
+      }
+    },
+    "/produto" : {
+      "post" : {
+        "description" : "Criar produto",
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProdutoResponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "auth-rest" : [ ]
+        } ]
+      }
+    },
+    "/hello-world" : {
+      "get" : {
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Empty"
+                }
+              },
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/HelloWorldResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pedido" : {
+      "get" : {
+        "description" : "Lista todos os pedidos, seguindo o critério: 1. Pronto > Em Preparação > Recebido; 2. Pedidos mais antigos primeiro e mais novos depois; 3. Pedidos com status Finalizado não devem aparecer na lista",
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PedidoListResponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "auth-rest" : [ ]
+        } ]
+      },
+      "post" : {
+        "description" : "Cadastra o pedido na fila",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Pedido"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PedidoResponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "auth-rest" : [ ]
+        } ]
+      }
+    },
+    "/pedido/pagamento/{idPedido}" : {
+      "get" : {
+        "parameters" : [ {
+          "name" : "idPedido",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "auth-rest" : [ ]
+        } ]
+      }
+    },
+    "/cliente/buscar-cpf/{cpf}" : {
+      "get" : {
+        "description" : "Identificação do Cliente via CPF",
+        "parameters" : [ {
+          "name" : "cpf",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ClienteResponse"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "auth-rest" : [ ]
+        } ]
+      }
+    },
+    "/pedido/pagamento" : {
+      "post" : {
+        "parameters" : [ {
+          "name" : "valor",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "idPedido",
+          "in" : "query",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "auth-rest" : [ ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Empty" : {
+        "title" : "Empty Schema",
+        "type" : "object",
+        "description" : "Nenhuma informação"
+      },
+      "LoginResponse" : {
+        "type" : "string"
+      },
+      "ClienteResponse" : {
+        "required" : [ "cpf", "id", "nome" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "nome" : {
+            "type" : "string"
+          },
+          "cpf" : {
+            "type" : "string"
+          }
+        },
+        "additionalProperties" : false,
+        "description" : "Cliente"
+      },
+      "PedidoResponse" : {
+        "required" : [ "cpf", "dataAtualizacao", "dataCriacao", "id", "itemPedido", "nome", "qrData", "status", "statusPagamento" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "cpf" : {
+            "type" : "string"
+          },
+          "nome" : {
+            "type" : "string"
+          },
+          "itemPedido" : {
+            "type" : "array",
+            "items" : {
+              "required" : [ "categoria", "descricao", "id", "preco", "quantidade" ],
+              "type" : "object",
+              "properties" : {
+                "id" : {
+                  "type" : "string"
+                },
+                "descricao" : {
+                  "type" : "string"
+                },
+                "observacoes" : {
+                  "type" : "string"
+                },
+                "quantidade" : {
+                  "minimum" : 0,
+                  "type" : "integer"
+                },
+                "preco" : {
+                  "minimum" : 0,
+                  "type" : "number"
+                },
+                "categoria" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "dataAtualizacao" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "dataCriacao" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "status" : {
+            "type" : "string"
+          },
+          "statusPagamento" : {
+            "type" : "string",
+            "enum" : [ "PENDENTE", "PAGO", "CANCELADO" ]
+          },
+          "qrData" : {
+            "type" : "string"
+          }
+        },
+        "additionalProperties" : false,
+        "description" : "Pedido"
+      },
+      "Pedido" : {
+        "required" : [ "clienteCPF", "clienteNome", "itemPedidos" ],
+        "type" : "object",
+        "properties" : {
+          "clienteCPF" : {
+            "pattern" : "^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$",
+            "type" : "string"
+          },
+          "clienteNome" : {
+            "type" : "string"
+          },
+          "itemPedidos" : {
+            "type" : "array",
+            "items" : {
+              "required" : [ "produtoUUID", "quantidade" ],
+              "type" : "object",
+              "properties" : {
+                "produtoUUID" : {
+                  "pattern" : "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+                  "type" : "string"
+                },
+                "observacoes" : {
+                  "type" : "string"
+                },
+                "quantidade" : {
+                  "minimum" : 1,
+                  "type" : "integer"
+                }
+              }
+            }
+          }
+        },
+        "additionalProperties" : false,
+        "description" : "Pedido"
+      },
+      "PedidoListResponse" : {
+        "type" : "array",
+        "description" : "Lista de pedidos",
+        "items" : {
+          "required" : [ "cpf", "dataAtualizacao", "dataCriacao", "id", "itemPedido", "nome", "qrData", "status", "statusPagamento" ],
+          "type" : "object",
+          "properties" : {
+            "id" : {
+              "type" : "string"
+            },
+            "cpf" : {
+              "type" : "string"
+            },
+            "nome" : {
+              "type" : "string"
+            },
+            "itemPedido" : {
+              "type" : "array",
+              "items" : {
+                "required" : [ "categoria", "descricao", "id", "preco", "quantidade" ],
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "string"
+                  },
+                  "descricao" : {
+                    "type" : "string"
+                  },
+                  "observacoes" : {
+                    "type" : "string"
+                  },
+                  "quantidade" : {
+                    "minimum" : 0,
+                    "type" : "integer"
+                  },
+                  "preco" : {
+                    "minimum" : 0,
+                    "type" : "number"
+                  },
+                  "categoria" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            },
+            "dataAtualizacao" : {
+              "type" : "string",
+              "format" : "date"
+            },
+            "dataCriacao" : {
+              "type" : "string",
+              "format" : "date"
+            },
+            "status" : {
+              "type" : "string"
+            },
+            "statusPagamento" : {
+              "type" : "string",
+              "enum" : [ "PENDENTE", "PAGO", "CANCELADO" ]
+            },
+            "qrData" : {
+              "type" : "string"
+            }
+          },
+          "additionalProperties" : false
+        }
+      },
+      "ProdutoResponse" : {
+        "type" : "array",
+        "description" : "Produto",
+        "items" : {
+          "required" : [ "descricao", "preco", "uuid" ],
+          "type" : "object",
+          "properties" : {
+            "uuid" : {
+              "type" : "string"
+            },
+            "descricao" : {
+              "type" : "string"
+            },
+            "preco" : {
+              "type" : "number"
+            }
+          },
+          "additionalProperties" : false
+        }
+      },
+      "LoginRequest" : {
+        "required" : [ "cpf" ],
+        "type" : "object",
+        "properties" : {
+          "cpf" : {
+            "type" : "string"
+          }
+        },
+        "additionalProperties" : false
+      },
+      "Cliente" : {
+        "required" : [ "cpf", "nome" ],
+        "type" : "object",
+        "properties" : {
+          "nome" : {
+            "type" : "string"
+          },
+          "cpf" : {
+            "pattern" : "^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$",
+            "type" : "string"
+          }
+        },
+        "additionalProperties" : false,
+        "description" : "Cliente"
+      },
+      "HelloWorldResponse" : {
+        "type" : "string"
+      },
+      "Produto" : {
+        "required" : [ "categoria", "descricao", "preco" ],
+        "type" : "object",
+        "properties" : {
+          "descricao" : {
+            "type" : "string"
+          },
+          "preco" : {
+            "type" : "number"
+          },
+          "categoria" : {
+            "type" : "string"
+          }
+        },
+        "additionalProperties" : false,
+        "description" : "Produto"
+      }
+    },
+    "securitySchemes" : {
+      "auth-rest" : {
+        "type" : "apiKey",
+        "description" : "Autenticação por CPF",
+        "name" : "Authorization",
+        "in" : "header",
+        "x-amazon-apigateway-authtype" : "custom"
+      }
+    }
+  }
+}

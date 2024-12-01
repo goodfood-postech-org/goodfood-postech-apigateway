@@ -1,0 +1,77 @@
+[
+    {
+        "id": "0pyq7i",
+        "name": "LoginResponse",
+        "schema": "{\n    \"type\": \"string\"\n}",
+        "contentType": "text/plain"
+    },
+    {
+        "id": "0w8q70",
+        "name": "LoginRequest",
+        "schema": "{\r\n  \"type\": \"object\",\r\n  \"properties\": {\r\n    \"cpf\": {\r\n      \"type\": \"string\"\r\n    }\r\n  },\r\n  \"required\": [\"cpf\"],\r\n  \"additionalProperties\": false\r\n}",
+        "contentType": "application/json"
+    },
+    {
+        "id": "4nsyvn",
+        "name": "PedidoResponse",
+        "schema": "{\r\n    \"type\": \"object\",\r\n    \"properties\": {\r\n      \"id\": {\r\n        \"type\": \"string\"\r\n      },\r\n      \"cpf\": {\r\n        \"type\": \"string\"\r\n      },\r\n      \"nome\": {\r\n        \"type\": \"string\"\r\n      },\r\n      \"itemPedido\": {\r\n        \"type\": \"array\",\r\n        \"items\": {\r\n          \"type\": \"object\",\r\n          \"properties\": {\r\n            \"id\": {\r\n              \"type\": \"string\"\r\n            },\r\n            \"descricao\": {\r\n              \"type\": \"string\"\r\n            },\r\n            \"observacoes\": {\r\n              \"type\": \"string\"\r\n            },\r\n            \"quantidade\": {\r\n              \"type\": \"integer\",\r\n              \"minimum\": 0\r\n            },\r\n            \"preco\": {\r\n              \"type\": \"number\",\r\n              \"minimum\": 0\r\n            },\r\n            \"categoria\": {\r\n              \"type\": \"string\"\r\n            }\r\n          },\r\n          \"required\": [\"id\", \"descricao\", \"quantidade\", \"preco\", \"categoria\"]\r\n        }\r\n      },\r\n      \"dataAtualizacao\": {\r\n        \"type\": \"string\",\r\n        \"format\": \"date\"\r\n      },\r\n      \"dataCriacao\": {\r\n        \"type\": \"string\",\r\n        \"format\": \"date\"\r\n      },\r\n      \"status\": {\r\n        \"type\": \"string\"\r\n      },\r\n      \"statusPagamento\": {\r\n        \"type\": \"string\",\r\n        \"enum\": [\"PENDENTE\", \"PAGO\", \"CANCELADO\"]\r\n      },\r\n      \"qrData\": {\r\n        \"type\": \"string\"\r\n      }\r\n    },\r\n    \"required\": [\r\n      \"id\",\r\n      \"cpf\",\r\n      \"nome\",\r\n      \"itemPedido\",\r\n      \"dataAtualizacao\",\r\n      \"dataCriacao\",\r\n      \"status\",\r\n      \"statusPagamento\",\r\n      \"qrData\"\r\n    ],\r\n    \"additionalProperties\": false\r\n}\r\n",
+        "contentType": "application/json"
+    },
+    {
+        "id": "elyjhg",
+        "name": "HelloWorldResponse",
+        "schema": "{\r\n    \"type\": \"string\"\r\n}",
+        "contentType": "text/plain"
+    },
+    {
+        "id": "gj9v5f",
+        "name": "Pedido",
+        "schema": "{\r\n  \"type\": \"object\",\r\n  \"properties\": {\r\n    \"clienteCPF\": {\r\n      \"type\": \"string\",\r\n      \"pattern\": \"^\\\\d{3}\\\\.\\\\d{3}\\\\.\\\\d{3}-\\\\d{2}$\"\r\n    },\r\n    \"clienteNome\": {\r\n      \"type\": \"string\"\r\n    },\r\n    \"itemPedidos\": {\r\n      \"type\": \"array\",\r\n      \"items\": {\r\n        \"type\": \"object\",\r\n        \"properties\": {\r\n          \"produtoUUID\": {\r\n            \"type\": \"string\",\r\n            \"pattern\": \"^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$\"\r\n          },\r\n          \"observacoes\": {\r\n            \"type\": \"string\"\r\n          },\r\n          \"quantidade\": {\r\n            \"type\": \"integer\",\r\n            \"minimum\": 1\r\n          }\r\n        },\r\n        \"required\": [\"produtoUUID\", \"quantidade\"]\r\n      }\r\n    }\r\n  },\r\n  \"required\": [\"clienteCPF\", \"clienteNome\", \"itemPedidos\"],\r\n  \"additionalProperties\": false\r\n}\r\n",
+        "contentType": "application/json"
+    },
+    {
+        "id": "hz3wc6",
+        "name": "ClienteResponse",
+        "schema": "{\r\n    \"type\": \"object\",\r\n    \"properties\": {\r\n      \"id\": {\r\n        \"type\": \"string\"\r\n      },\r\n      \"nome\": {\r\n        \"type\": \"string\"\r\n      },\r\n      \"cpf\": {\r\n        \"type\": \"string\"\r\n      }\r\n    },\r\n    \"required\": [\"id\", \"nome\", \"cpf\"],\r\n    \"additionalProperties\": false\r\n}\r\n",
+        "contentType": "application/json"
+    },
+    {
+        "id": "jjdxqn",
+        "name": "PedidoListResponse",
+        "schema": "{\r\n    \"type\": \"array\",\r\n    \"items\": {\r\n      \"type\": \"object\",\r\n      \"properties\": {\r\n        \"id\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"cpf\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"nome\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"itemPedido\": {\r\n          \"type\": \"array\",\r\n          \"items\": {\r\n            \"type\": \"object\",\r\n            \"properties\": {\r\n              \"id\": {\r\n                \"type\": \"string\"\r\n              },\r\n              \"descricao\": {\r\n                \"type\": \"string\"\r\n              },\r\n              \"observacoes\": {\r\n                \"type\": \"string\"\r\n              },\r\n              \"quantidade\": {\r\n                \"type\": \"integer\",\r\n                \"minimum\": 0\r\n              },\r\n              \"preco\": {\r\n                \"type\": \"number\",\r\n                \"minimum\": 0\r\n              },\r\n              \"categoria\": {\r\n                \"type\": \"string\"\r\n              }\r\n            },\r\n            \"required\": [\"id\", \"descricao\", \"quantidade\", \"preco\", \"categoria\"]\r\n          }\r\n        },\r\n        \"dataAtualizacao\": {\r\n          \"type\": \"string\",\r\n          \"format\": \"date\"\r\n        },\r\n        \"dataCriacao\": {\r\n          \"type\": \"string\",\r\n          \"format\": \"date\"\r\n        },\r\n        \"status\": {\r\n          \"type\": \"string\"\r\n        },\r\n        \"statusPagamento\": {\r\n          \"type\": \"string\",\r\n          \"enum\": [\"PENDENTE\", \"PAGO\", \"CANCELADO\"]\r\n        },\r\n        \"qrData\": {\r\n          \"type\": \"string\"\r\n        }\r\n      },\r\n      \"required\": [\r\n        \"id\",\r\n        \"cpf\",\r\n        \"nome\",\r\n        \"itemPedido\",\r\n        \"dataAtualizacao\",\r\n        \"dataCriacao\",\r\n        \"status\",\r\n        \"statusPagamento\",\r\n        \"qrData\"\r\n      ],\r\n      \"additionalProperties\": false\r\n    }\r\n}\r\n",
+        "contentType": "application/json"
+    },
+    {
+        "id": "juii8w",
+        "name": "ProdutoResponse",
+        "schema": "{\r\n  \"type\": \"array\",\r\n  \"items\": {\r\n    \"type\": \"object\",\r\n    \"properties\": {\r\n      \"uuid\": {\r\n        \"type\": \"string\"\r\n      },\r\n      \"descricao\": {\r\n        \"type\": \"string\"\r\n      },\r\n      \"preco\": {\r\n        \"type\": \"number\"\r\n      }\r\n    },\r\n    \"required\": [\"uuid\", \"descricao\", \"preco\"],\r\n    \"additionalProperties\": false\r\n  }\r\n}\r\n",
+        "contentType": "application/json"
+    },
+    {
+        "id": "l92jc4",
+        "name": "Error",
+        "description": "This is a default error schema model",
+        "schema": "{\n  \"$schema\" : \"http://json-schema.org/draft-04/schema#\",\n  \"title\" : \"Error Schema\",\n  \"type\" : \"object\",\n  \"properties\" : {\n    \"message\" : { \"type\" : \"string\" }\n  }\n}",
+        "contentType": "application/json"
+    },
+    {
+        "id": "stxxmf",
+        "name": "Empty",
+        "description": "This is a default empty schema model",
+        "schema": "{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"title\" : \"Empty Schema\",\n  \"type\" : \"object\"\n}",
+        "contentType": "application/json"
+    },
+    {
+        "id": "ti5kl3",
+        "name": "Cliente",
+        "schema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"nome\": {\n      \"type\": \"string\"\n    },\n    \"cpf\": {\n      \"type\": \"string\",\n      \"pattern\": \"^\\\\d{3}\\\\.\\\\d{3}\\\\.\\\\d{3}-\\\\d{2}$\"\n    }\n  },\n  \"required\": [\"nome\", \"cpf\"],\n  \"additionalProperties\": false\n}",
+        "contentType": "application/json"
+    },
+    {
+        "id": "yghxw9",
+        "name": "Produto",
+        "description": "Produto",
+        "schema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"descricao\": {\n      \"type\": \"string\"\n    },\n    \"preco\": {\n      \"type\": \"number\"\n    },\n    \"categoria\": {\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\"descricao\", \"preco\", \"categoria\"],\n  \"additionalProperties\": false\n}",
+        "contentType": "application/json"
+    }
+]
